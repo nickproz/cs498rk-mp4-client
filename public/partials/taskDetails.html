@@ -5,7 +5,7 @@
 			<td>
 				<div class="row">
 					<div class="small-8 columns">
-						<p class="data">{{task.name}} <br> Description: {{task.description}} <br> Deadline: {{formatDate(task.deadline)}} <br> Assigned to {{task.assignedUserName}}. <br> Completed: {{task.completed}}</p>
+						<p class="data">{{task.name}} <br> Description: {{task.description}} <br> Deadline: {{task.deadline | date : 'MM/dd/yyyy'}} <br> Assigned to {{task.assignedUserName}}. <br> Completed: {{task.completed}}</p>
 					</div>
 					
 					<div class="small-2 columns">

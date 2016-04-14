@@ -5,14 +5,8 @@ var mp4Controllers = angular.module('mp4Controllers', ['720kb.datepicker']);
 
 // SETTINGS
 mp4Controllers.controller('SettingsController', ['$scope' , '$http', '$window', function($scope, $http, $window) {
-	
-    //$window.sessionStorage.baseurl = url;
-  
-    /* $scope.setUrl = function(){
-		$window.sessionStorage.baseurl = $scope.url;
-		$('#settingsAlert').show();
-    };
- */
+
+
 	$scope.url = $window.sessionStorage.baseurl;
 	$scope.setUrl = function(){
 		$window.sessionStorage.baseurl = $scope.url;
@@ -72,6 +66,14 @@ mp4Controllers.controller('AddUserController', ['$scope', 'Users', function($sco
 		$scope.user.name = $scope.name;
 		$scope.user.email = $scope.email;
 		
+		// Client-side validation
+		if($scope.user.name === undefined || $scope.user.name === "undefined" || $scope.user.email === undefined || $scope.user.name === "undefined"){
+			$scope.userFail = "Please fill out all fields with valid characters.";
+			$('#userSuccess').hide();
+			$('#userFail').show();
+			return;
+		}
+		
 		Users.createUser($scope.user).success(function(data) {
 			$scope.userSuccess = data.message;
 			$('#userSuccess').show();
@@ -89,17 +91,8 @@ mp4Controllers.controller('UserDetailsController', ['$scope', 'Users', 'Tasks', 
 	
 	// Current user ID
 	$scope.id = $routeParams.id;
-	
+	// Do not show completed tasks by default
 	$scope.showCompletedTasks = false;
-	
-	// Function to format date into readable date
-	$scope.formatDate = function(oldDate)
-	{
-		if(oldDate === undefined || oldDate === "undefined")
-			return;
-		newDate = oldDate.toString().substring(0,10).split("-");
-		return newDate[1] + "/" + newDate[2] + "/" + newDate[0];
-	};
 	
 	// Formulate query to only get pending tasks of the user
 	var formulateQuery = function() {
@@ -175,15 +168,6 @@ mp4Controllers.controller('UserDetailsController', ['$scope', 'Users', 'Tasks', 
 
 // TASKS
 mp4Controllers.controller('TasksController', ['$scope', '$http', 'Tasks', 'Users', function($scope, $http, Tasks, Users) {
-
-	// Function to format date into readable date
-	$scope.formatDate = function(oldDate)
-	{
-		if(oldDate === undefined || oldDate === "undefined")
-			return;
-		newDate = oldDate.toString().substring(0,10).split("-");
-		return newDate[1] + "/" + newDate[2] + "/" + newDate[0];
-	};
 
 	// Variables for pagination
 	$scope.pagination = 10;
@@ -292,6 +276,14 @@ mp4Controllers.controller('AddTaskController', ['$scope', 'Tasks', 'Users', func
 		$scope.task.name = $scope.taskName;
 		$scope.task.description = $scope.description;
 		$scope.task.deadline = $scope.deadline;
+		
+		// Client-side validation
+		if($scope.task.deadline === undefined || $scope.task.deadline === "undefined" || $scope.task.name === undefined || $scope.task.name === "undefined") {
+			$scope.taskFail = "Please fill out all required fields with valid characters.";
+			$('#taskSuccess').hide();
+			$('#taskFail').show();
+			return;
+		}
 
 		if($scope.user === undefined || $scope.user === "undefined") {
 			$scope.task.assignedUser = "";
@@ -335,15 +327,6 @@ mp4Controllers.controller('TaskDetailsController', ['$scope', 'Tasks', '$routePa
 	
 	// Current task ID
 	$scope.id = $routeParams.id;
-	
-	// Function to format date into readable date
-	$scope.formatDate = function(oldDate)
-	{
-		if(oldDate === undefined || oldDate === "undefined")
-			return;
-		newDate = oldDate.toString().substring(0,10).split("-");
-		return newDate[1] + "/" + newDate[2] + "/" + newDate[0];
-	};
 
 	// Get task at our task url and set our scope variable to task data received from database
 	$scope.getTaskDetails = function () {
@@ -450,7 +433,6 @@ mp4Controllers.controller('EditTasksController', ['$scope', 'Tasks', 'Users', '$
 				})
 			}
 		}
-
 		
 		Tasks.updateTask($scope.newTask, $scope.id).success(function(data) {
 			$scope.taskSuccess = data.message;

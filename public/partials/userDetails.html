@@ -13,7 +13,7 @@
 				<div class="row">
 					<div class="small-8 columns">
 						<a ng-href="#/tasks/{{task._id}}">
-							<p class="data">{{task.name}} <br> Deadline: {{formatDate(task.deadline)}} </p>
+							<p class="data">{{task.name}} <br> Deadline: {{task.deadline | date : 'MM/dd/yyyy'}} </p>
 						</a>
 					</div>
 					<div class="small-1 columns">
@@ -36,7 +36,7 @@
 					<div class="row">
 						<div class="small-8 columns">
 							<a ng-href="#/tasks/{{completed._id}}">
-								<p class="data">{{completed.name}} <br> Deadline: {{formatDate(completed.deadline)}}</p>
+								<p class="data">{{completed.name}} <br> Deadline: {{completed.deadline | date : 'MM/dd/yyyy'}}</p>
 							</a>
 						</div>
 					</div>
