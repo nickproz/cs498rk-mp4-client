@@ -1,0 +1,52 @@
+<div id="tasks" ng-controller='TasksController'>    
+
+  <h3 class="center"> Tasks <h3>
+	
+	<div class="text-center row">
+		<div class="small-5 small-centered columns">
+			<label> Sort By: </label>
+			<select id="dropDown" ng-model="sorting" ng-change="getTasks()" ng-options="option.value as option.name for option in dropdowns"> </select>
+		</div>
+	</div>
+	
+	<div class="text-center row">
+		<label> Show: </label>
+		<input type="radio" name="Pending" value="pending" ng-checked="true" ng-change="getTasks()" ng-model="tasksToShow"> <label> Pending </label> </input>
+		<input type="radio" name="Completed" value="completed" ng-change="getTasks()" ng-model="tasksToShow"> <label> Completed </label> </input>
+		<input type="radio" name="All" value="all" ng-change="getTasks()" ng-model="tasksToShow"> <label> All </label> </input>
+	</div>
+	
+	<div class="text-center row">
+		<label> Direction: </label>
+		<input type="radio" name="Ascending" value="1" ng-checked="true" ng-model="direction" ng-change="getTasks()"> <label> Ascending </label> </input>
+		<input type="radio" name="Descending" value="-1" ng-model="direction" ng-change="getTasks()"> <label> Descending </label> </input>
+	</div>
+	
+	<div class="text-center">
+		<a class="button success info" href="#/addTask">Add Task</a>
+	</div>
+	
+	<div class="text-center row">
+		<button style="margin-right:300px;" ng-click="updatePagination(-pagination)" class="button secondary">Previous</button>
+		<button style="margin-left:300px;" ng-click="updatePagination(pagination)" class="button secondary">Next</button>
+	</div>
+	
+	<table class="center">
+	  <tr ng-repeat="task in tasks">
+		<td>
+			<div class="row">
+				<div class="small-10 columns">
+					<a ng-href="#/tasks/{{task._id}}">
+						<p class="data">{{task.name}} <br> Deadline: {{formatDate(task.deadline)}} <br> Assigned to {{task.assignedUserName}}.</p>
+					</a>
+				</div>
+				
+				<div class="small-1 columns">
+					<button ng-click="deleteTask(task, task._id)" class="button alert">Delete</button>
+				</div>
+			</div>
+		</td>	
+	  </tr>
+    </table>  
+  
+</div>

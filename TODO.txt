@@ -1,0 +1,57 @@
+Part A
+
+-Your database should be on mLab. It should contain at least 20 users and 100 tasks (about half of which should be completed) (We will provide you a script to do this after spring break.).
+
+Part B 
+
+-Settings URL thing
+-Change back end to front end stuff
+	
+	remove a user -> front end (change all assigned users to unassigned)	Probably		DONE
+	create new task -> front end? (dont push task id to pending array)		YES				DONE
+	remove a task -> front end (pull task id from pending array)			YES				DONE
+
+	edit task new user? add to pending array, remove old one?
+	
+	if task switches to completed, remove task from old user pending array
+	if task switches to not completed, add task to new user pending array
+	
+	if task does not switch and is not completed:
+		if user changes:
+			add task to new user pending array
+			remove task from old user pending array
+			
+	if((switch && completed) || (!switch && !completed && userswitch)
+	
+	Empty fields if field not specified??
+	
+REMOVE USER
+// Loop through all user's tasks and change their assigned user field to unassigned
+	/* for(var i = 0; i < tasks.length; i++) {
+		Task.update(
+			{ '_id': tasks[i] },
+			{ assignedUserName: "unassigned", assignedUser: "" }, function(err, task) {}
+		);
+	} */
+	
+REMOVE TASK
+/* if(user !== "") {
+		User.update(
+			{ '_id': user},
+			{ $pull: { "pendingTasks": id } }, function(err) {
+				return res.status(200).send({'message': 'Task successfully deleted.', 'data': []});
+			}
+		);
+	}
+	else { */
+	
+CREATE NEW TASK
+/* if(task.assignedUser === "") 
+		{}
+	else {
+		User.update(
+			{ '_id': task.assignedUser },
+			{ $push: {"pendingTasks" : savedTask._id} }, 
+			function(err, person) {}
+		);	
+	} */

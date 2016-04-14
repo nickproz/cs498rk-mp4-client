@@ -1,0 +1,56 @@
+<div class="userDetails" ng-controller='UserDetailsController'>
+
+	<div class="row center">
+		<div class="small-8 small-centered columns">
+			<p class="data"> User: {{user.name}} <br> Email: {{user.email}}</p>
+		</div>
+	</div>
+
+	<table class="center">
+		<tr> <td> <h3> Pending Tasks </h3> </td> </tr>
+		<tr ng-repeat="task in tasks">
+			<td>
+				<div class="row">
+					<div class="small-8 columns">
+						<a ng-href="#/tasks/{{task._id}}">
+							<p class="data">{{task.name}} <br> Deadline: {{formatDate(task.deadline)}} </p>
+						</a>
+					</div>
+					<div class="small-1 columns">
+						<button ng-click="completed(task, task._id)" class="button secondary">Completed</button>
+					</div>
+				</div>
+		  
+			</td>	
+		  </tr>
+		  
+	</table>
+	
+	<div class="center" style="margin: 30px;" > <button ng-click="showCompletedTasks = true" class="button secondary">Show Completed Tasks</button> </div>
+ 
+	<table class="center" ng-show="showCompletedTasks">
+		<div id="completedTasks">
+			  <tr> <td> <h3> Completed Tasks </h3> </td> </tr>
+			  <tr ng-repeat="completed in finishedTasks">
+				<td>
+					<div class="row">
+						<div class="small-8 columns">
+							<a ng-href="#/tasks/{{completed._id}}">
+								<p class="data">{{completed.name}} <br> Deadline: {{formatDate(completed.deadline)}}</p>
+							</a>
+						</div>
+					</div>
+			  
+				</td>	
+			  </tr>
+		  </div>
+	</table>
+  
+	<div id="userDetailFail" style="margin-top:30px;" class="alert callout center popup" data-closable>
+	  <p> {{userDetailFail}} </p>
+	  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+		<span aria-hidden="true">&times;</span>
+	  </button>
+	</div>
+  
+</div>

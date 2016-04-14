@@ -1,0 +1,28 @@
+<div id="users" ng-controller='UsersController'>
+
+  <h3 class="center"> Users <h3>
+  
+    <div class="text-center">
+		<a class="button success info" href="#/addUser">Add User</a>
+    </div>
+	  
+    <table class="center">
+	  <tr ng-repeat="user in users">
+		<td>
+			<div class="row">
+	
+				<div class="small-8 columns">
+					<a ng-href="#/users/{{user._id}}">
+						<p class="data"> User: {{user.name}} <br> Email: {{user.email}} <br> </p>
+					</a>
+				</div>
+				
+				<div class="small-1 columns">
+					<button ng-click="deleteUser(user, user._id)" class="button alert">Delete</button>
+				</div>
+			</div>
+		</td>	
+	  </tr>
+    </table>  
+  
+</div>

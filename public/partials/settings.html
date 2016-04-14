@@ -1,0 +1,28 @@
+<div id="settings" ng-controller='SettingsController'>	
+
+	<h3 class="center"> Settings <h3>
+	
+	<p class="center"> Set your backend URL. </p>
+	
+	<form>
+	
+	  <div class="row">
+          <div class="small-12 columns">
+            <input ng-model="url" type="text" placeholder="URL">
+          </div>
+      </div>
+
+	  <div class="text-center">
+		  <button ng-click="setUrl()" class="button secondary">Set URL</button>
+	  </div>
+	  
+  </form>
+  
+	<div id="settingsAlert" class="success callout center popup" data-closable>
+	  <p> URL set. </p>
+	  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+		<span aria-hidden="true">&times;</span>
+	  </button>
+	</div>
+  
+</div>

@@ -1,0 +1,67 @@
+// PAGE FRAME
+#header h1
+{
+	font-size: 55px;
+}
+
+#settings h3, #tasks h3, #users h3, #addUser h3
+{
+	margin: 40px;
+}
+
+// SETTINGS
+#settings p
+{
+	color: #a0a0a0;
+	font-size: 20px;
+}
+
+.popup
+{
+	width: 60%;
+	display: none;
+	font-size: 20px;
+	margin: 20px;
+}
+
+.data
+{
+	font-size:20px;
+	text-decoration: none;
+	font-weight: none;
+}
+
+.radio
+{
+	display:inline-block;
+}
+
+// OTHER
+table
+{
+	width: 60%;
+}
+
+.center
+{
+	text-align: center;
+	margin: 0 auto;
+}
+
+.required
+{
+	color: red;
+}
+
+html, body
+{
+	width: 100%;
+	height: 100%;
+	font-family: $body-font;
+}
+
+h1, h2, h3, h4, h5, h6
+{
+	font-family: $header-font;
+	color: #404040;
+}

@@ -1,0 +1,40 @@
+<div id="addUser" ng-controller='AddUserController'>
+
+  <h3 class="center"> Add User <h3>
+  
+  <form data-abide>
+	  <div class="row">
+		<div class="small-12 columns">
+		  <h4> Name <span class="required"> * </span> <h4>
+		  <input ng-model="name" type="text" required pattern="[a-zA-Z ]+" placeholder="Enter your first and last name.">
+		</div>
+	  </div>
+	  
+	  <div class="row">
+		<div class="small-12 columns">
+		  <h4> Email <span class="required"> * </span> <h4>
+		  <input ng-model="email" type="email" required placeholder="Enter your email address.">
+		</div>
+	  </div>
+	  
+	  <div class="text-center">
+		<button ng-click="addUser()" class="button secondary">Submit</button>
+	  </div>
+	  
+	  <div id="userFail" class="alert callout center popup" data-closable>
+		  <p> {{userFail}} </p>
+		  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+			<span aria-hidden="true">&times;</span>
+		  </button>
+	  </div>
+	  
+	  <div id="userSuccess" class="success callout center popup" data-closable>
+		  <p> {{userSuccess}} </p>
+		  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+			<span aria-hidden="true">&times;</span>
+		  </button>
+	  </div>
+	  
+  </form>
+  
+</div>

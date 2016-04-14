@@ -1,0 +1,57 @@
+<div class="addTask" ng-controller='AddTaskController'>
+
+  <h3 class="center"> Add Task <h3>
+  
+  <form data-abide>
+  
+	  <div class="row">
+		<div class="small-12 columns">
+		  <h4> Name <span class="required"> * </span> <h4>
+		  <input ng-model="taskName" type="text" required placeholder="Enter a task name.">
+		</div>
+	  </div>
+	  
+	  <div class="row">
+		<div class="small-12 columns">
+		  <h4> Description <h4>
+		  <input ng-model="description" type="text" placeholder="Enter a task description (optional).">
+		</div>
+	  </div>
+	  
+	  <div class="row">
+		<div class="small-12 columns">
+		  <h4> Deadline <span class="required"> * </span> <h4>
+		  <!-- <input ng-model="deadline" type="date" required placeholder="Enter a task deadline."> -->
+		  <datepicker date-format="shortDate" required placeholder="Enter a task deadline.">
+			  <input ng-model="deadline" type="text"/>
+		  </datepicker>
+		</div>
+	  </div>
+	  
+	  <div class="row">
+		<div class="small-12 columns">
+		  <h4> Assigned User  <h4>
+		  <select id="dropDown" ng-model="user" type="text" ng-options="usr.name for usr in users"> </select>
+		</div>
+	  </div>
+	  
+	  <div class="text-center">
+		<button ng-click="addTask()" class="button secondary">Submit</button>
+	  </div>
+	  
+	  <div id="taskFail" class="alert callout center popup" data-closable>
+		  <p> {{taskFail}} </p>
+		  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+			<span aria-hidden="true">&times;</span>
+		  </button>
+	  </div>
+	  
+	  <div id="taskSuccess" class="success callout center popup" data-closable>
+		  <p> {{taskSuccess}} </p>
+		  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+			<span aria-hidden="true">&times;</span>
+		  </button>
+	  </div>
+  </form>
+  
+</div>

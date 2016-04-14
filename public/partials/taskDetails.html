@@ -1,0 +1,27 @@
+<div class="taskDetails" ng-controller='TaskDetailsController'>
+
+	<table class="center">
+		<tr class="center">
+			<td>
+				<div class="row">
+					<div class="small-8 columns">
+						<p class="data">{{task.name}} <br> Description: {{task.description}} <br> Deadline: {{formatDate(task.deadline)}} <br> Assigned to {{task.assignedUserName}}. <br> Completed: {{task.completed}}</p>
+					</div>
+					
+					<div class="small-2 columns">
+						<a class="button secondary info" href="#/tasks/edit/{{task._id}}">Edit Task</a>
+					</div>
+					
+				</div>
+				
+				<div id="taskDetailFail" class="alert callout center popup" data-closable>
+				  <p> {{taskDetailFail}} </p>
+				  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+					<span aria-hidden="true">&times;</span>
+				  </button>
+			  </div>
+			</td>
+		</tr>
+	</table>
+  
+</div>
