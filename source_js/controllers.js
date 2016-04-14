@@ -8,11 +8,17 @@ mp4Controllers.controller('SettingsController', ['$scope' , '$http', '$window', 
 	
     //$window.sessionStorage.baseurl = url;
   
-    $scope.setUrl = function(){
+    /* $scope.setUrl = function(){
 		$window.sessionStorage.baseurl = $scope.url;
 		$('#settingsAlert').show();
     };
-
+ */
+	$scope.url = $window.sessionStorage.baseurl;
+	$scope.setUrl = function(){
+		$window.sessionStorage.baseurl = $scope.url;
+		$('#settingsAlert').show();
+	};
+ 
 }]);
 
 // USERS
